@@ -65,7 +65,10 @@ public class UiController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        scoreText.text = $"Score: {GameManager.instance.Score}";
+        gameOverScoreText.text = $"Score: {GameManager.instance.Score}";
+        var span = new TimeSpan(0, 0, (int)GameManager.instance.TimeRemaining);
+        timerText.text = $"Time: {span.Minutes}:{span.Seconds}";
     }
 
     // Update is called once per frame

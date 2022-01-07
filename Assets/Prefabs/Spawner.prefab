@@ -684,12 +684,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlimePrefabs:
-  - {fileID: 5161086876593900093, guid: 404e89e34503241498d026917f44e57b, type: 3}
-  - {fileID: 6887512703183513880, guid: db1d6a4ba9b980449902f61d90e6e5f8, type: 3}
-  - {fileID: 6156717394889709741, guid: 9739e40f952aace4daea4f5b8144745b, type: 3}
-  - {fileID: 8041302012814723362, guid: 3833c8a04dde5d146993495405d31354, type: 3}
-  - {fileID: 560538798495426305, guid: e7c8677cf5112ca4faa01e8370daa4d8, type: 3}
-  - {fileID: 5745829007347225589, guid: d5b32a2101de9d141b06c646640f819c, type: 3}
+  - {fileID: 5161086876593900093, guid: 8635406871fab47458e5c6fa2bee6ba3, type: 3}
+  - {fileID: 5161086876593900093, guid: 0bdbb9ebb90fedf4781c5200531ddeac, type: 3}
+  - {fileID: 5161086876593900093, guid: 61a384f38cfe73840a02894e5105ce28, type: 3}
+  - {fileID: 5161086876593900093, guid: cfd18c161e7da1d4ab84fd5e1a34ccea, type: 3}
+  - {fileID: 5161086876593900093, guid: bf35c4c7cc378ad41997233c6822f398, type: 3}
+  - {fileID: 5161086876593900093, guid: 184673b10688df54b8701d7c1f37b470, type: 3}
   SpawnPoints:
   - {fileID: 768933176665040415}
   - {fileID: 768933176527073808}
