@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class UiController : MonoBehaviour
 {
+    public Sprite[] slimeSprites;
     public TMP_Text scoreText;
     public TMP_Text multiplierText;
     public TMP_Text timerText;
     public TMP_Text gameOverScoreText;
     public TMP_Text levelCompleteText;
     public TMP_Text levelCompleteScoreText;
+    public Image multiplierImage;
 
     public GameObject gameoverPanel;
     public GameObject levelcompletePanel;
@@ -45,7 +48,29 @@ public class UiController : MonoBehaviour
 
     private void EventManager_onMultiplierChange(SlimeType type, int value)
     {
-        multiplierText.text = $"{type.ToString()} Slime X {value}";
+        switch (type)
+        {
+            case SlimeType.Blue:
+                multiplierImage.sprite = slimeSprites[0];
+                break;
+            case SlimeType.Green:
+                multiplierImage.sprite = slimeSprites[1];
+                break;
+            case SlimeType.Red:
+                multiplierImage.sprite = slimeSprites[2];
+                break;
+            case SlimeType.Pink:
+                multiplierImage.sprite = slimeSprites[3];
+                break;
+            case SlimeType.Silver:
+                multiplierImage.sprite = slimeSprites[4];
+                break;
+            case SlimeType.Mystic:
+                multiplierImage.sprite = slimeSprites[5];
+                break;
+        }
+        multiplierText.text = $"Score X {value}";
+        //multiplierText.text = $"{type.ToString()} Slime X {value}";
     }
 
     private void EventManager_onTimeChanged()

@@ -17,6 +17,7 @@ public class LevelPrefs : MonoBehaviour
         GameManager.instance.TimeRemaining = GameTimer;
         GameManager.instance.TimeToChangeMultiplier = MultiplierTimer;
         GameManager.instance.TimeToMulplierChangeRemaining = MultiplierTimer;
+        GameManager.instance.MultiplierRandomize();
     }
 
     // Update is called once per frame
