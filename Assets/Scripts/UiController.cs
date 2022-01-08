@@ -65,8 +65,11 @@ public class UiController : MonoBehaviour
             case SlimeType.Silver:
                 multiplierImage.sprite = slimeSprites[4];
                 break;
-            case SlimeType.Mystic:
+            case SlimeType.Gold:
                 multiplierImage.sprite = slimeSprites[5];
+                break;
+            case SlimeType.Mystic:
+                multiplierImage.sprite = slimeSprites[6];
                 break;
         }
         multiplierText.text = $"Score X {value}";

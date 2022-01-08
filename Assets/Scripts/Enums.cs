@@ -5,5 +5,6 @@ public enum SlimeType
     Red,
     Pink,
     Silver,
+    Gold,
     Mystic
 }

@@ -600,6 +600,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 903ba22a46a7e7b49abe5ef35c0eb3a7, type: 3}
   - {fileID: 21300000, guid: daa9cdb22417a704b893b32ce2082185, type: 3}
   - {fileID: 21300000, guid: cdcca3a6cf9a6f144b17bed8c90224e0, type: 3}
+  - {fileID: 21300000, guid: 6c72198254ec33f4aa038ea9958e6a9b, type: 3}
   - {fileID: 21300000, guid: 997c80cbdaa0409418e0435353247302, type: 3}
   scoreText: {fileID: 1638811814764579027}
   multiplierText: {fileID: 1638811815513451100}
