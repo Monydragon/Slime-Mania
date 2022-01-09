@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slimeType: 0
-  baseScore: 1
+  baseCoins: 5
   minRangeWalk: {x: -8.3, y: -4.45}
   maxRangeWalk: {x: 8.3, y: 4.45}
   speed: 3
@@ -144,3 +144,4 @@ MonoBehaviour:
   timer: 0
   randomPos: {x: 0, y: 0}
   isCaptured: 0
+  ableToMove: 1

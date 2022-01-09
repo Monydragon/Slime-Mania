@@ -435,6 +435,34 @@ PrefabInstance:
       propertyPath: NumberToSpawn
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 768933175990648718, guid: 8758fef4f5f7c1843876259e6872d37a, type: 3}
+      propertyPath: SlimePrefabs.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 768933175990648718, guid: 8758fef4f5f7c1843876259e6872d37a, type: 3}
+      propertyPath: SlimePrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 4920969789339794166, guid: 889ac7e1d30052746bc37cb216bd9482, type: 3}
+    - target: {fileID: 768933175990648718, guid: 8758fef4f5f7c1843876259e6872d37a, type: 3}
+      propertyPath: SlimePrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 4920969789339794166, guid: 889ac7e1d30052746bc37cb216bd9482, type: 3}
+    - target: {fileID: 768933175990648718, guid: 8758fef4f5f7c1843876259e6872d37a, type: 3}
+      propertyPath: SlimePrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 4920969789339794166, guid: 889ac7e1d30052746bc37cb216bd9482, type: 3}
+    - target: {fileID: 768933175990648718, guid: 8758fef4f5f7c1843876259e6872d37a, type: 3}
+      propertyPath: SlimePrefabs.Array.data[10]
+      value: 
+      objectReference: {fileID: 4920969789339794166, guid: 889ac7e1d30052746bc37cb216bd9482, type: 3}
+    - target: {fileID: 768933175990648718, guid: 8758fef4f5f7c1843876259e6872d37a, type: 3}
+      propertyPath: SlimePrefabs.Array.data[11]
+      value: 
+      objectReference: {fileID: 4920969789339794166, guid: 889ac7e1d30052746bc37cb216bd9482, type: 3}
+    - target: {fileID: 768933175990648718, guid: 8758fef4f5f7c1843876259e6872d37a, type: 3}
+      propertyPath: SlimePrefabs.Array.data[12]
+      value: 
+      objectReference: {fileID: 4920969789339794166, guid: 889ac7e1d30052746bc37cb216bd9482, type: 3}
     - target: {fileID: 768933175990648719, guid: 8758fef4f5f7c1843876259e6872d37a, type: 3}
       propertyPath: m_Name
       value: Spawner

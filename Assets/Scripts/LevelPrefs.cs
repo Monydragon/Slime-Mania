@@ -6,9 +6,32 @@ public class LevelPrefs : MonoBehaviour
 {
     public float GameTimer = 30f;
     public float MultiplierTimer = 5f;
+    public bool SlimeOverride = true;
     public float SlimeSpeed = 3f;
-    public int SlimeBaseScore = 1;
     public float SlimeTimeBetweenWalking = 3f;
+
+    private void OnEnable()
+    {
+        EventManager.onSlimeSpawn += EventManager_onSlimeSpawn;
+    }
+
+    private void EventManager_onSlimeSpawn(GameObject value)
+    {
+        if (SlimeOverride)
+        {
+            var slime = value.GetComponent<SlimeController>();
+            if (slime != null)
+            {
+                slime.speed = SlimeSpeed;
+                slime.timeBetweenWalking = SlimeTimeBetweenWalking;
+            }
+        }
+    }
+
+    private void OnDisable()
+    {
+        EventManager.onSlimeSpawn -= EventManager_onSlimeSpawn;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -23,14 +46,6 @@ public class LevelPrefs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var slimes = GameObject.FindGameObjectsWithTag("Slime");
 
-        for (int i = 0; i < slimes.Length; i++)
-        {
-            var slime = slimes[i].GetComponent<SlimeController>();
-            slime.speed = SlimeSpeed;
-            slime.baseScore = SlimeBaseScore;
-            slime.timeBetweenWalking = SlimeTimeBetweenWalking;
-        }
     }
 }

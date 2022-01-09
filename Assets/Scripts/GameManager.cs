@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public int Score;
+    public int Coins;
     public float TimeRemaining = 30f;
     public float TimeToMulplierChangeRemaining = 5f;
     public float TimeToCompleteLevel = 30f;
@@ -16,14 +17,38 @@ public class GameManager : MonoBehaviour
     public int StandardMultiplier = 1;
     public SlimeType SlimeTypeMultiplier;
     public int MultiplierForSlimeType = 2;
-    public int minMutliplierMod = 2;
-    public int maxMutliplierMod = 6;
+    public int MinMultiplierMod = 2;
+    public int MaxMultiplierMod = 6;
+    public List<Transform> SlimeTransforms = new List<Transform>();
+    public int TotalSlimesSpawned;
 
     private void OnEnable()
     {
         EventManager.onMultiplierChange += EventManager_onMultiplierChange;
         EventManager.onGameReset += EventManager_onGameReset;
         EventManager.onLoadNextLevel += EventManager_onLoadNextLevel;
+        EventManager.onSlimeSpawn += EventManager_onSlimeSpawn;
+        EventManager.onSlimeConvert += EventManager_onSlimeConvert;
+        EventManager.onSlimeDestroy += EventManager_onSlimeDestroy;
+    }
+
+    private void EventManager_onSlimeDestroy(GameObject value)
+    {
+        if(value != null)
+        {
+            SlimeTransforms.Remove(value.transform);
+            Destroy(value.gameObject);
+        }
+    }
+
+    private void EventManager_onSlimeConvert(GameObject value)
+    {
+        SlimeTransforms.Remove(value.transform);
+    }
+
+    private void EventManager_onSlimeSpawn(GameObject value)
+    {
+        SlimeTransforms.Add(value.transform);
     }
 
     private void EventManager_onLoadNextLevel()
@@ -31,17 +56,19 @@ public class GameManager : MonoBehaviour
         TimeRemaining = 30f;
         TimeToMulplierChangeRemaining = 5f;
         GameOver = false;
-        EventManager.ScoreChanged();
+        SlimeTransforms.Clear();
+        EventManager.CoinsChanged();
         EventManager.TimeChanged();
     }
 
     private void EventManager_onGameReset()
     {
-        Score = 0;
+        Coins = 0;
         TimeRemaining = 30f;
         TimeToMulplierChangeRemaining = 5f;
         GameOver = false;
-        EventManager.ScoreChanged();
+        SlimeTransforms.Clear();
+        EventManager.CoinsChanged();
         EventManager.TimeChanged();
     }
 
@@ -56,6 +83,9 @@ public class GameManager : MonoBehaviour
         EventManager.onMultiplierChange -= EventManager_onMultiplierChange;
         EventManager.onGameReset -= EventManager_onGameReset;
         EventManager.onLoadNextLevel -= EventManager_onLoadNextLevel;
+        EventManager.onSlimeSpawn -= EventManager_onSlimeSpawn;
+        EventManager.onSlimeConvert -= EventManager_onSlimeConvert;
+        EventManager.onSlimeDestroy -= EventManager_onSlimeDestroy;
 
     }
 
@@ -90,15 +120,16 @@ public class GameManager : MonoBehaviour
             TimeRemaining -= Time.deltaTime;
             EventManager.TimeChanged();
             TimeToMulplierChangeRemaining -= Time.deltaTime;
+
+            if (RemainingSlimes <= 0)
+            {
+                EventManager.LevelComplete();
+            }
+
             if (TimeRemaining < 0)
             {
                 GameOver = true;
-                Debug.Log("Game Over");
-                if(RemainingSlimes <= 0)
-                {
-                    EventManager.LevelComplete();
-                }
-                else
+                if(RemainingSlimes > 0)
                 {
                     EventManager.LevelFail();
                 }
@@ -117,6 +148,6 @@ public class GameManager : MonoBehaviour
     {
         var ranEnumVal = UnityEngine.Random.Range(0, Enum.GetNames(typeof(SlimeType)).Length);
         SlimeType ranSlimeType = (SlimeType)ranEnumVal;
-        EventManager.MultiplierChange(ranSlimeType, UnityEngine.Random.Range(minMutliplierMod, maxMutliplierMod));
+        EventManager.MultiplierChange(ranSlimeType, UnityEngine.Random.Range(MinMultiplierMod, MaxMultiplierMod));
     }
 }

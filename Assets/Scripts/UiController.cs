@@ -9,12 +9,12 @@ using UnityEngine.SceneManagement;
 public class UiController : MonoBehaviour
 {
     public Sprite[] slimeSprites;
-    public TMP_Text scoreText;
+    public TMP_Text coinText;
     public TMP_Text multiplierText;
     public TMP_Text timerText;
-    public TMP_Text gameOverScoreText;
+    public TMP_Text gameOverCoinText;
     public TMP_Text levelCompleteText;
-    public TMP_Text levelCompleteScoreText;
+    public TMP_Text levelCompleteCoinText;
     public Image multiplierImage;
 
     public GameObject gameoverPanel;
@@ -23,7 +23,7 @@ public class UiController : MonoBehaviour
     {
         EventManager.onTimeChanged += EventManager_onTimeChanged;
         EventManager.onMultiplierChange += EventManager_onMultiplierChange;
-        EventManager.onScoreChanged += EventManager_onScoreChanged;
+        EventManager.onCoinsChanged += EventManager_onCoinsChange;
         EventManager.onLoseLevel += EventManager_onLoseLevel;
         EventManager.onWinLevel += EventManager_onWinLevel;
     }
@@ -32,7 +32,7 @@ public class UiController : MonoBehaviour
     {
         levelcompletePanel.SetActive(true);
         levelCompleteText.text = $"Level {SceneManager.GetActiveScene().buildIndex + 1} Complete!";
-        levelCompleteScoreText.text = $"Score: {GameManager.instance.Score}";
+        levelCompleteCoinText.text = $"Coins: {GameManager.instance.Coins}";
     }
 
     private void EventManager_onLoseLevel()
@@ -40,10 +40,10 @@ public class UiController : MonoBehaviour
         gameoverPanel.SetActive(true);
     }
 
-    private void EventManager_onScoreChanged()
+    private void EventManager_onCoinsChange()
     {
-        scoreText.text = $"Score: {GameManager.instance.Score}";
-        gameOverScoreText.text = $"Score: {GameManager.instance.Score}";
+        coinText.text = $"Coins: {GameManager.instance.Coins}";
+        gameOverCoinText.text = $"Coins: {GameManager.instance.Coins}";
     }
 
     private void EventManager_onMultiplierChange(SlimeType type, int value)
@@ -72,7 +72,7 @@ public class UiController : MonoBehaviour
                 multiplierImage.sprite = slimeSprites[6];
                 break;
         }
-        multiplierText.text = $"Score X {value}";
+        multiplierText.text = $"Coin X {value}";
         //multiplierText.text = $"{type.ToString()} Slime X {value}";
     }
 
@@ -86,15 +86,15 @@ public class UiController : MonoBehaviour
     {
         EventManager.onTimeChanged -= EventManager_onTimeChanged;
         EventManager.onMultiplierChange -= EventManager_onMultiplierChange;
-        EventManager.onScoreChanged -= EventManager_onScoreChanged;
+        EventManager.onCoinsChanged -= EventManager_onCoinsChange;
         EventManager.onLoseLevel -= EventManager_onLoseLevel;
         EventManager.onWinLevel -= EventManager_onWinLevel;
     }
     // Start is called before the first frame update
     void Start()
     {
-        scoreText.text = $"Score: {GameManager.instance.Score}";
-        gameOverScoreText.text = $"Score: {GameManager.instance.Score}";
+        coinText.text = $"Coins: {GameManager.instance.Coins}";
+        gameOverCoinText.text = $"Coins: {GameManager.instance.Coins}";
         var span = new TimeSpan(0, 0, (int)GameManager.instance.TimeRemaining);
         timerText.text = $"Time: {span.Minutes}:{span.Seconds}";
     }
