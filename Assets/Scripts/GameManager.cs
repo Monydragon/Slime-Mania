@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
     public int Coins;
     public float TimeRemaining = 30f;
     public float TimeToMulplierChangeRemaining = 5f;
@@ -21,6 +21,13 @@ public class GameManager : MonoBehaviour
     public int MaxMultiplierMod = 6;
     public List<Transform> SlimeTransforms = new List<Transform>();
     public int TotalSlimesSpawned;
+    public GameState State = GameState.Menu;
+
+    public enum GameState
+    {
+        Menu,
+        Playing
+    }
 
     private void OnEnable()
     {
@@ -59,6 +66,7 @@ public class GameManager : MonoBehaviour
         SlimeTransforms.Clear();
         EventManager.CoinsChanged();
         EventManager.TimeChanged();
+        State = GameState.Playing;
     }
 
     private void EventManager_onGameReset()
@@ -70,6 +78,7 @@ public class GameManager : MonoBehaviour
         SlimeTransforms.Clear();
         EventManager.CoinsChanged();
         EventManager.TimeChanged();
+        State= GameState.Playing;
     }
 
     private void EventManager_onMultiplierChange(SlimeType type, int value)
@@ -91,10 +100,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
 
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
 
@@ -114,34 +123,40 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameOver)
+        switch (State)
         {
-            RemainingSlimes = GameObject.FindGameObjectsWithTag("Slime").Length;
-            TimeRemaining -= Time.deltaTime;
-            EventManager.TimeChanged();
-            TimeToMulplierChangeRemaining -= Time.deltaTime;
-
-            if (RemainingSlimes <= 0)
-            {
-                EventManager.LevelComplete();
-            }
-
-            if (TimeRemaining < 0)
-            {
-                GameOver = true;
-                if(RemainingSlimes > 0)
+            case GameState.Menu:
+                break;
+            case GameState.Playing:
+                if (!GameOver)
                 {
-                    EventManager.LevelFail();
+                    RemainingSlimes = GameObject.FindGameObjectsWithTag("Slime").Length;
+                    TimeRemaining -= Time.deltaTime;
+                    EventManager.TimeChanged();
+                    TimeToMulplierChangeRemaining -= Time.deltaTime;
+
+                    if (RemainingSlimes <= 0)
+                    {
+                        EventManager.LevelComplete();
+                    }
+
+                    if (TimeRemaining < 0)
+                    {
+                        GameOver = true;
+                        if (RemainingSlimes > 0)
+                        {
+                            EventManager.LevelFail();
+                        }
+                    }
+
+                    if (TimeToMulplierChangeRemaining <= 0)
+                    {
+                        MultiplierRandomize();
+                        TimeToMulplierChangeRemaining = TimeToChangeMultiplier;
+                    }
                 }
-            }
-
-            if(TimeToMulplierChangeRemaining <= 0)
-            {
-                MultiplierRandomize();
-                TimeToMulplierChangeRemaining = TimeToChangeMultiplier;
-            }
+                break;
         }
-
     }
 
     public void MultiplierRandomize()

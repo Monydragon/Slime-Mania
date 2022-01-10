@@ -21,13 +21,13 @@ public class MonsterPinController : MonoBehaviour
                 var currentSlime = obj.GetComponent<SlimeController>();
                 if (currentSlime != null)
                 {
-                    if (GameManager.instance.SlimeTypeMultiplier == currentSlime.slimeType)
+                    if (GameManager.Instance.SlimeTypeMultiplier == currentSlime.slimeType)
                     {
-                        GameManager.instance.Coins += currentSlime.baseCoins * GameManager.instance.MultiplierForSlimeType;
+                        GameManager.Instance.Coins += currentSlime.baseCoins * GameManager.Instance.MultiplierForSlimeType;
                     }
                     else
                     {
-                        GameManager.instance.Coins += currentSlime.baseCoins * GameManager.instance.StandardMultiplier;
+                        GameManager.Instance.Coins += currentSlime.baseCoins * GameManager.Instance.StandardMultiplier;
                     }
                     EventManager.CoinsChanged();
                     Destroy(obj);

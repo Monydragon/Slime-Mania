@@ -36,11 +36,11 @@ public class LevelPrefs : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.instance.TimeToCompleteLevel = GameTimer;
-        GameManager.instance.TimeRemaining = GameTimer;
-        GameManager.instance.TimeToChangeMultiplier = MultiplierTimer;
-        GameManager.instance.TimeToMulplierChangeRemaining = MultiplierTimer;
-        GameManager.instance.MultiplierRandomize();
+        GameManager.Instance.TimeToCompleteLevel = GameTimer;
+        GameManager.Instance.TimeRemaining = GameTimer;
+        GameManager.Instance.TimeToChangeMultiplier = MultiplierTimer;
+        GameManager.Instance.TimeToMulplierChangeRemaining = MultiplierTimer;
+        GameManager.Instance.MultiplierRandomize();
     }
 
     // Update is called once per frame

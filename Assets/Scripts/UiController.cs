@@ -31,8 +31,8 @@ public class UiController : MonoBehaviour
     private void EventManager_onWinLevel()
     {
         levelcompletePanel.SetActive(true);
-        levelCompleteText.text = $"Level {SceneManager.GetActiveScene().buildIndex + 1} Complete!";
-        levelCompleteCoinText.text = $"Coins: {GameManager.instance.Coins}";
+        levelCompleteText.text = $"Level {SceneManager.GetActiveScene().buildIndex} Complete!";
+        levelCompleteCoinText.text = $"Coins: {GameManager.Instance.Coins}";
     }
 
     private void EventManager_onLoseLevel()
@@ -42,8 +42,8 @@ public class UiController : MonoBehaviour
 
     private void EventManager_onCoinsChange()
     {
-        coinText.text = $"Coins: {GameManager.instance.Coins}";
-        gameOverCoinText.text = $"Coins: {GameManager.instance.Coins}";
+        coinText.text = $"Coins: {GameManager.Instance.Coins}";
+        gameOverCoinText.text = $"Coins: {GameManager.Instance.Coins}";
     }
 
     private void EventManager_onMultiplierChange(SlimeType type, int value)
@@ -78,7 +78,7 @@ public class UiController : MonoBehaviour
 
     private void EventManager_onTimeChanged()
     {
-        var span = new TimeSpan(0, 0, (int)GameManager.instance.TimeRemaining);
+        var span = new TimeSpan(0, 0, (int)GameManager.Instance.TimeRemaining);
         timerText.text = $"Time: {span.Minutes}:{span.Seconds}";
     }
 
@@ -93,9 +93,9 @@ public class UiController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coinText.text = $"Coins: {GameManager.instance.Coins}";
-        gameOverCoinText.text = $"Coins: {GameManager.instance.Coins}";
-        var span = new TimeSpan(0, 0, (int)GameManager.instance.TimeRemaining);
+        coinText.text = $"Coins: {GameManager.Instance.Coins}";
+        gameOverCoinText.text = $"Coins: {GameManager.Instance.Coins}";
+        var span = new TimeSpan(0, 0, (int)GameManager.Instance.TimeRemaining);
         timerText.text = $"Time: {span.Minutes}:{span.Seconds}";
     }
 

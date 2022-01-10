@@ -24,7 +24,7 @@ public class BombSlimeController : MonoBehaviour
     {
         if (!lockedOnTarget)
         {
-            target = GetClosestSlime(GameManager.instance.SlimeTransforms.ToArray());
+            target = GetClosestSlime(GameManager.Instance.SlimeTransforms.ToArray());
             if(target != null)
             {
                 transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);

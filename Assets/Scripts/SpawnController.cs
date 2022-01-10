@@ -19,7 +19,7 @@ public class SpawnController : MonoBehaviour
 
     public IEnumerator SpawnSlimes()
     {
-        GameManager.instance.TotalSlimesSpawned = NumberToSpawn;
+        GameManager.Instance.TotalSlimesSpawned = NumberToSpawn;
         for (int i = 0; i < NumberToSpawn; i++)
         {
             var randSlime = SlimePrefabs[Random.Range(0, SlimePrefabs.Length)];
