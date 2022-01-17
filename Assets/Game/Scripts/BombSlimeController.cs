@@ -14,6 +14,7 @@ public class BombSlimeController : MonoBehaviour
     private bool lockedOnTarget;
     private Transform target;
     private Animator m_Animator;
+    private bool isExploading;
 
     private void Awake()
     {
@@ -57,26 +58,27 @@ public class BombSlimeController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        var slime = collision.transform.GetComponent<SlimeController>();
-        if (slime != null)
+        if (!isExploading)
         {
-            lockedOnTarget = true;
-            slime.ableToMove = false;
-            StartCoroutine(Explode(collision.gameObject));
-            gameObject.GetComponent<Collider2D>().enabled = false;
+            var slime = collision.transform.GetComponent<SlimeController>();
+            if (slime != null)
+            {
+                lockedOnTarget = true;
+                slime.ableToMove = false;
+                StartCoroutine(Explode(collision.gameObject));
+            }
+            var bomb = collision.transform.GetComponent<BombSlimeController>();
+            if (bomb != null)
+            {
+                lockedOnTarget = true;
+                StartCoroutine(Explode(collision.gameObject));
+            }
         }
-        var bomb = collision.transform.GetComponent<BombSlimeController>();
-        if (bomb != null)
-        {
-            lockedOnTarget = true;
-            StartCoroutine(Explode(collision.gameObject));
-            gameObject.GetComponent<Collider2D>().enabled = false;
-        }
-
     }
 
     public IEnumerator Explode(GameObject obj)
     {
+        isExploading = true;
         if (m_Animator != null)
         {
             m_Animator.SetTrigger("Explode");
