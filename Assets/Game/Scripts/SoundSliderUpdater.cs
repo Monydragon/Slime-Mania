@@ -32,21 +32,25 @@ public class SoundSliderUpdater : MonoBehaviour
 
     public void UpdateSoundLevels()
     {
-        int sliderValue = (int)(slider.value * 100);
-
-        AudioManager.Instance.SetVolume(channel,sliderValue);
-
-        switch (channel)
+        if(slider != null)
         {
-            case AudioManager.AudioChannel.Master:
-                soundText.text = $"Master Volume: {sliderValue} / 100";
-                break;
-            case AudioManager.AudioChannel.Sound:
-                soundText.text = $"Sound Volume: {sliderValue} / 100";
-                break;
-            case AudioManager.AudioChannel.Music:
-                soundText.text = $"Music Volume: {sliderValue} / 100";
-                break;
+            int sliderValue = (int)(slider.value * 100);
+
+            AudioManager.Instance.SetVolume(channel, sliderValue);
+
+            switch (channel)
+            {
+                case AudioManager.AudioChannel.Master:
+                    soundText.text = $"Master Volume: {sliderValue} / 100";
+                    break;
+                case AudioManager.AudioChannel.Sound:
+                    soundText.text = $"Sound Volume: {sliderValue} / 100";
+                    break;
+                case AudioManager.AudioChannel.Music:
+                    soundText.text = $"Music Volume: {sliderValue} / 100";
+                    break;
+            }
         }
+
     }
 }
