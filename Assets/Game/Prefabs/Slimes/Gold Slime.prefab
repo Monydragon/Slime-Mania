@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5161086876593900092}
   - component: {fileID: 5161086876593900080}
   m_Layer: 0
-  m_Name: GoldSlime
+  m_Name: Gold Slime
   m_TagString: Slime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

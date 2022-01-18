@@ -26,6 +26,23 @@ public class GameManager : MonoBehaviour
     public AudioClip LevelCompleteAudioClip;
     public AudioClip LevelFailedAudioClip;
 
+    public GameObject greenSlimePrefab;
+    public GameObject blueSlimePrefab;
+    public GameObject redSlimePrefab;
+    public GameObject pinkSlimePrefab;
+    public GameObject silverSlimePrefab;
+    public GameObject goldSlimePrefab;
+    public GameObject mysticSlimePrefab;
+    public GameObject bombslimePrefab;
+
+
+    public bool SilverSlimeUnlocked;
+    public bool GoldSlimeUnlocked;
+    public bool MysticSlimeUnlocked;
+
+    public SpawnController Spawner;
+
+
     public enum GameState
     {
         Menu,
@@ -114,6 +131,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
     // Start is called before the first frame update
     void Start()
@@ -169,6 +187,13 @@ public class GameManager : MonoBehaviour
     {
         var ranEnumVal = UnityEngine.Random.Range(0, Enum.GetNames(typeof(SlimeType)).Length);
         SlimeType ranSlimeType = (SlimeType)ranEnumVal;
+
+        while (ranEnumVal == 4 && !SilverSlimeUnlocked || ranEnumVal == 5 && !GoldSlimeUnlocked || ranEnumVal == 6 && !MysticSlimeUnlocked)
+        {
+            ranEnumVal = UnityEngine.Random.Range(0, Enum.GetNames(typeof(SlimeType)).Length);
+            ranSlimeType = (SlimeType)ranEnumVal;
+        }
+
         EventManager.MultiplierChange(ranSlimeType, UnityEngine.Random.Range(MinMultiplierMod, MaxMultiplierMod));
     }
 }

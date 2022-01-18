@@ -42,6 +42,27 @@ public class LevelPrefs : MonoBehaviour
         GameManager.Instance.TimeToMulplierChangeRemaining = MultiplierTimer;
         GameManager.Instance.MultiplierRandomize();
         GameManager.Instance.GameOver = false;
+
+        if (GameManager.Instance.Spawner == null)
+        {
+            GameManager.Instance.Spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnController>();
+        }
+
+        if (GameManager.Instance.SilverSlimeUnlocked)
+        {
+            GameManager.Instance.Spawner.SlimePrefabs.Add(GameManager.Instance.silverSlimePrefab);
+        }
+
+        if (GameManager.Instance.GoldSlimeUnlocked)
+        {
+            GameManager.Instance.Spawner.SlimePrefabs.Add(GameManager.Instance.goldSlimePrefab);
+        }
+
+        if (GameManager.Instance.MysticSlimeUnlocked)
+        {
+            GameManager.Instance.Spawner.SlimePrefabs.Add(GameManager.Instance.mysticSlimePrefab);
+        }
+
     }
 
     // Update is called once per frame

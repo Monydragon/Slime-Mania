@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 768933175990648718}
   m_Layer: 0
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -689,9 +689,6 @@ MonoBehaviour:
   - {fileID: 5161086876593900093, guid: 0bdbb9ebb90fedf4781c5200531ddeac, type: 3}
   - {fileID: 5161086876593900093, guid: 61a384f38cfe73840a02894e5105ce28, type: 3}
   - {fileID: 5161086876593900093, guid: cfd18c161e7da1d4ab84fd5e1a34ccea, type: 3}
-  - {fileID: 5161086876593900093, guid: bf35c4c7cc378ad41997233c6822f398, type: 3}
-  - {fileID: 5161086876593900093, guid: 48ac64b59cc03a4418c2891f5ca65784, type: 3}
-  - {fileID: 5161086876593900093, guid: 184673b10688df54b8701d7c1f37b470, type: 3}
   SpawnPoints:
   - {fileID: 768933176665040415}
   - {fileID: 768933176527073808}
@@ -736,6 +733,7 @@ MonoBehaviour:
   RootGameobject: {fileID: 4352438938005070044}
   NumberToSpawn: 10
   SpawnDelay: 1
+  RemainingToSpawn: 0
 --- !u!1 &768933175992907842
 GameObject:
   m_ObjectHideFlags: 0

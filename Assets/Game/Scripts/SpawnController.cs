@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnController : MonoBehaviour
 {
-    public GameObject[] SlimePrefabs;
+    public List<GameObject> SlimePrefabs;
     public GameObject[] SpawnPoints;
     public GameObject RootGameobject;
     public int NumberToSpawn;
@@ -23,7 +23,7 @@ public class SpawnController : MonoBehaviour
         GameManager.Instance.TotalSlimesSpawned = NumberToSpawn;
         for (int i = 0; i < NumberToSpawn; i++)
         {
-            var randSlime = SlimePrefabs[Random.Range(0, SlimePrefabs.Length)];
+            var randSlime = SlimePrefabs[Random.Range(0, SlimePrefabs.Count)];
             var randSpawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Length)];
             var spawnedSlime = Instantiate(randSlime, randSpawnPoint.transform.position, Quaternion.identity, RootGameobject.transform);
             EventManager.SpawnSlime(spawnedSlime);

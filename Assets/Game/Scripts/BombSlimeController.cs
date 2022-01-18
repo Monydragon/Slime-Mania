@@ -99,7 +99,6 @@ public class BombSlimeController : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        Debug.Log("Mouse Down Clicked on Bomb Slime");
         currentClickedAmount++;
 
         if (currentClickedAmount >= numberOfClicksToDisable)

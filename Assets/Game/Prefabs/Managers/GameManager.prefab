@@ -57,6 +57,19 @@ MonoBehaviour:
   MaxMultiplierMod: 6
   SlimeTransforms: []
   TotalSlimesSpawned: 0
+  TotalSlimesRemainingToSpawn: 0
   State: 0
   LevelCompleteAudioClip: {fileID: 8300000, guid: ebf5d6cdb3d0ea740a2400a888c22b4a, type: 3}
   LevelFailedAudioClip: {fileID: 8300000, guid: 8d0b169e97e50534ba2533f1ca53f8fe, type: 3}
+  greenSlimePrefab: {fileID: 5161086876593900093, guid: 0bdbb9ebb90fedf4781c5200531ddeac, type: 3}
+  blueSlimePrefab: {fileID: 5161086876593900093, guid: 8635406871fab47458e5c6fa2bee6ba3, type: 3}
+  redSlimePrefab: {fileID: 5161086876593900093, guid: 61a384f38cfe73840a02894e5105ce28, type: 3}
+  pinkSlimePrefab: {fileID: 5161086876593900093, guid: cfd18c161e7da1d4ab84fd5e1a34ccea, type: 3}
+  silverSlimePrefab: {fileID: 5161086876593900093, guid: bf35c4c7cc378ad41997233c6822f398, type: 3}
+  goldSlimePrefab: {fileID: 5161086876593900093, guid: 48ac64b59cc03a4418c2891f5ca65784, type: 3}
+  mysticSlimePrefab: {fileID: 5161086876593900093, guid: 184673b10688df54b8701d7c1f37b470, type: 3}
+  bombslimePrefab: {fileID: 4920969789339794166, guid: 889ac7e1d30052746bc37cb216bd9482, type: 3}
+  SilverSlimeUnlocked: 0
+  GoldSlimeUnlocked: 0
+  MysticSlimeUnlocked: 0
+  Spawner: {fileID: 0}

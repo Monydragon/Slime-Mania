@@ -118,6 +118,7 @@ public class UiController : MonoBehaviour
 
     public void StartGame()
     {
+        GameManager.Instance.State = GameManager.GameState.Playing;
         SceneManager.LoadScene("Level1");
     }
 

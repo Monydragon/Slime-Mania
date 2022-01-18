@@ -299,7 +299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 768933175990648718, guid: 8758fef4f5f7c1843876259e6872d37a, type: 3}
       propertyPath: NumberToSpawn
-      value: 5
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 768933175990648718, guid: 8758fef4f5f7c1843876259e6872d37a, type: 3}
       propertyPath: RemainingToSpawn
@@ -595,11 +595,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4299413046467999257, guid: 15d63f4135fab2a4ca83f6e7dacf63d0, type: 3}
       propertyPath: GameTimer
-      value: 15
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 4299413046467999257, guid: 15d63f4135fab2a4ca83f6e7dacf63d0, type: 3}
       propertyPath: SlimeSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299413046467999257, guid: 15d63f4135fab2a4ca83f6e7dacf63d0, type: 3}
+      propertyPath: MultiplierTimer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4299413046467999257, guid: 15d63f4135fab2a4ca83f6e7dacf63d0, type: 3}
       propertyPath: SlimeTimeBetweenWalking
@@ -709,6 +713,10 @@ PrefabInstance:
     - target: {fileID: 6060948535190119742, guid: 9d2e10b4c0383ce49b94bef35c98fbea, type: 3}
       propertyPath: m_Name
       value: Grid
+      objectReference: {fileID: 0}
+    - target: {fileID: 6060948535190119742, guid: 9d2e10b4c0383ce49b94bef35c98fbea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6060948536166647587, guid: 9d2e10b4c0383ce49b94bef35c98fbea, type: 3}
       propertyPath: m_Enabled
