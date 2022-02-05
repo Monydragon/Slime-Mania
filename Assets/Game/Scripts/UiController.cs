@@ -21,6 +21,7 @@ public class UiController : MonoBehaviour
     public GameObject shopPanel;
     public GameObject gameoverPanel;
     public GameObject levelcompletePanel;
+    public GameObject pausePanel;
 
     public List<Button> ShopButtons;
 
@@ -125,7 +126,11 @@ public class UiController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape) && GameManager.Instance.State == GameManager.GameState.Playing)
+        {
+            pausePanel.SetActive(true);
+            GameManager.Instance.State = GameManager.GameState.Menu;
+        }
     }
 
     public void ConvertSlimesToPoints()
@@ -137,6 +142,16 @@ public class UiController : MonoBehaviour
     {
         EventManager.GameReset();
         SceneManager.LoadScene("Level1");
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ResumeGame()
+    {
+        GameManager.Instance.State = GameManager.GameState.Playing;
     }
 
     public void StartGame()
