@@ -57,7 +57,7 @@ MonoBehaviour:
   MaxMultiplierMod: 6
   SlimeTransforms: []
   TotalSlimesSpawned: 0
-  TotalSlimesRemainingToSpawn: 0
+  TotalSlimesRemainingToSpawn: -1
   State: 0
   LevelCompleteAudioClip: {fileID: 8300000, guid: ebf5d6cdb3d0ea740a2400a888c22b4a, type: 3}
   LevelFailedAudioClip: {fileID: 8300000, guid: 8d0b169e97e50534ba2533f1ca53f8fe, type: 3}

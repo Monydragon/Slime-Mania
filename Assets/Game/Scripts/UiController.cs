@@ -16,9 +16,14 @@ public class UiController : MonoBehaviour
     public TMP_Text levelCompleteText;
     public TMP_Text levelCompleteCoinText;
     public Image multiplierImage;
-
+    public TMP_Text shopCoinText;
+    public TMP_Text nextLevelButtonText;
+    public GameObject shopPanel;
     public GameObject gameoverPanel;
     public GameObject levelcompletePanel;
+
+    public List<Button> ShopButtons;
+
     private void OnEnable()
     {
         EventManager.onTimeChanged += EventManager_onTimeChanged;
@@ -33,6 +38,11 @@ public class UiController : MonoBehaviour
         levelcompletePanel.SetActive(true);
         levelCompleteText.text = $"Level {SceneManager.GetActiveScene().buildIndex} Complete!";
         levelCompleteCoinText.text = $"Coins: {GameManager.Instance.Coins}";
+
+        if(SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
+        {
+            nextLevelButtonText.text = "Shop";
+        }
     }
 
     private void EventManager_onLoseLevel()
@@ -44,6 +54,7 @@ public class UiController : MonoBehaviour
     {
         coinText.text = $"Coins: {GameManager.Instance.Coins}";
         gameOverCoinText.text = $"Coins: {GameManager.Instance.Coins}";
+        shopCoinText.text = $"Coins: {GameManager.Instance.Coins}";
     }
 
     private void EventManager_onMultiplierChange(SlimeType type, int value)
@@ -93,10 +104,22 @@ public class UiController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coinText.text = $"Coins: {GameManager.Instance.Coins}";
-        gameOverCoinText.text = $"Coins: {GameManager.Instance.Coins}";
         var span = new TimeSpan(0, 0, (int)GameManager.Instance.TimeRemaining);
         timerText.text = $"Time: {span.Minutes}:{span.Seconds}";
+        EventManager.CoinsChanged();
+
+        if (GameManager.Instance.SilverSlimeUnlocked)
+        {
+            ShopButtons[0].interactable = false;
+        }
+        if (GameManager.Instance.GoldSlimeUnlocked)
+        {
+            ShopButtons[1].interactable = false;
+        }
+        if (GameManager.Instance.MysticSlimeUnlocked)
+        {
+            ShopButtons[2].interactable = false;
+        }
     }
 
     // Update is called once per frame
@@ -124,13 +147,15 @@ public class UiController : MonoBehaviour
 
     public void GotoNextLevel()
     {
-        if(SceneManager.sceneCountInBuildSettings >= SceneManager.GetActiveScene().buildIndex + 1)
+        if(SceneManager.sceneCountInBuildSettings > SceneManager.GetActiveScene().buildIndex + 1)
         {
             EventManager.LoadNextLevel();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
         {
+            shopPanel.SetActive(true);
+            levelcompletePanel.SetActive(false);
             Debug.Log("No More Levels to Load!");
         }
     }
@@ -138,5 +163,37 @@ public class UiController : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         AudioManager.Instance.Play(clip, Camera.main.transform);
+    }
+
+    public void UnlockSilverSlime(int cost)
+    {
+        if(GameManager.Instance.Coins >= cost)
+        {
+            GameManager.Instance.Coins -= cost;
+            EventManager.CoinsChanged();
+            GameManager.Instance.SilverSlimeUnlocked = true;
+            ShopButtons[0].interactable = false;
+        }
+    }
+
+    public void UnlockGoldSlime(int cost)
+    {
+        if (GameManager.Instance.Coins >= cost)
+        {
+            GameManager.Instance.Coins -= cost;
+            EventManager.CoinsChanged();
+            GameManager.Instance.GoldSlimeUnlocked = true;
+            ShopButtons[1].interactable = false;
+        }
+    }
+    public void UnlockMysticSlime(int cost)
+    {
+        if (GameManager.Instance.Coins >= cost)
+        {
+            GameManager.Instance.Coins -= cost;
+            EventManager.CoinsChanged();
+            GameManager.Instance.MysticSlimeUnlocked = true;
+            ShopButtons[2].interactable = false;
+        }
     }
 }

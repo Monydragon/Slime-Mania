@@ -104,7 +104,9 @@ public class BombSlimeController : MonoBehaviour
         if (currentClickedAmount >= numberOfClicksToDisable)
         {
             var randSlime = Random.Range(0, slimePrefabs.Count);
-            Instantiate(slimePrefabs[randSlime], transform.position, Quaternion.identity);
+            var slime = Instantiate(slimePrefabs[randSlime], transform.position, Quaternion.identity);
+            GameManager.Instance.SlimeTransforms.Remove(gameObject.transform);
+            GameManager.Instance.SlimeTransforms.Add(slime.transform);
             Destroy(gameObject);
         }
     }

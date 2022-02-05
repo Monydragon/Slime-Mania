@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public int MaxMultiplierMod = 6;
     public List<Transform> SlimeTransforms = new List<Transform>();
     public int TotalSlimesSpawned;
-    public int TotalSlimesRemainingToSpawn;
+    public int TotalSlimesRemainingToSpawn = -1;
     public GameState State = GameState.Menu;
     public AudioClip LevelCompleteAudioClip;
     public AudioClip LevelFailedAudioClip;
@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
                     EventManager.TimeChanged();
                     TimeToMulplierChangeRemaining -= Time.deltaTime;
 
-                    if (RemainingSlimes <= 0 && TotalSlimesRemainingToSpawn <= 0)
+                    if (RemainingSlimes <= 0 && TotalSlimesRemainingToSpawn == 0)
                     {
                         GameOver = true;
                         AudioManager.Instance.Play(LevelCompleteAudioClip, transform);
