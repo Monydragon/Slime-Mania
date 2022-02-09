@@ -126,7 +126,7 @@ public class UiController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && GameManager.Instance.State == GameManager.GameState.Playing)
+        if (Input.GetKeyDown(KeyCode.Escape) | Input.GetKeyDown(KeyCode.P) && GameManager.Instance.State == GameManager.GameState.Playing)
         {
             pausePanel.SetActive(true);
             GameManager.Instance.State = GameManager.GameState.Menu;
